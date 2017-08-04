@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+<html lang="en">
+	<head>
+	{% block head %}
+		{{ wizard.form.media }}
+		<title>{% block title %}Training{% endblock %}</title>
+		
+	{% endblock %}
+		=
+	</head>
+	<!-- Content -->
+	{% block content %}
+		<p> Step {{ wizard.steps.step1 }} of {{wizard.steps.count }} </p>
+				{% if step1 %}
+					{% include 'grandvigne/train3.html' %}
+					hey
+				{% elif step2 %}
+					{% include 'grandvigne/train4.html' %}
+					h
+				{% endif %}
+				{% for field in form %}
+					{{field.error}}
+				{% endfor %}
+				<form action = "" method = "post"> {% csrf_token %}
+				<table>
+					{{wizard.management_form }}
+					{% if wizard.form.forms %}
+						{{wizard.form.management_form}}
+						{%for form in wizard.form.forms %}
+							{{ form }}
+						{% endfor %}
+					{% else %}
+						{{ wizard.form }}
+					{% endif %}
+				</table>
+				{% if wizard.steps.prev %}
+					<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}"> "first step" </button>
+					<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">"prev step" </button>
+				{% endif %}
+				<input type = "submit" value =  "submit"/>
+				</form>
+	{% endblock %}
+    <!-- END Content -->
+	{% block footer %}
+		<div id = "footer">
+			
+				{% include 'grandvigne/tf/training-base.html' %}
+		
+		</div>
+	{% endblock %}
+
+</html>

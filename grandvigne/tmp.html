@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Vote/style.css' %}" />
+<fieldset id="fieldset">
+    <form method = 'POST' action = ''>{%csrf_token %}
+        <p>{{ voteTypeForm }}</p>
+        <div id="placeholder">
+
+        </div>
+        <p>
+            <button type="button" name="Submit" onclick="Add();">+</button>
+        </p>
+        <input type = 'submit' value="create"/>
+    </form>
+</fieldset>
+<script type='text/javascript'>
+{#    document.write(code);#}
+    var _counter = 0;
+    var template = document.createTextNode('');
+    function appendStringAsNodes(element, html)
+    {
+        var frag = document.createDocumentFragment(),
+            tmp = document.createElement('body'), child;
+        tmp.innerHTML = html;
+        // Append elements in a loop to a DocumentFragment, so that the browser does
+        // not re-render the document for each node
+        while (child = tmp.firstChild) {
+            frag.appendChild(child);
+        }
+        element.appendChild(frag); // Now, append all elements at once
+        frag = tmp = null;
+    }
+    function Add() {
+        var code = '<div id="template">' +
+                '<p>' +
+                    '<fieldset id="fieldsets">' +
+                        '<legend id="legends">Candidate No ['+ String(_counter+1) +']</legend>' +
+                       ' <form method = "POST" action = "">'+
+                              '<input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token }}" />' +
+                            '<p><label for="id_name">Name:</label> <input id="id_name" maxlength="50" name="name" type="text" /></p>'+
+                            '<p><label for="id_image">Image:</label> <input id="id_image" name="image" type="file" /></p>'+
+                        '</form>' +
+                   ' </fieldset>' +
+                '</p>' +
+            '</div>';
+        _counter++;
+        appendStringAsNodes(document.getElementById("placeholder"),code);
+        document.getElementById("someInput").value = _counter;
+    }
+</script>

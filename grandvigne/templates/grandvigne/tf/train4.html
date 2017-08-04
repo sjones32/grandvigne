@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+
+<html lang="en">
+
+	<head>
+		{% block head %}
+			<title>{% block title %}Training{% endblock %}</title>
+		{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+			<h1> Crafting a Vignette </h1>
+				<h2> The Descriptive Statement </h2>
+					<p> A descriptive statement expands the interactive statement. They are statements
+					which describe the level of a technology that affect the overall security level when performing the action.
+					The descriptive statements have <b>$variables </b> which are varied by level to change the perception
+					of the vignette. Some examples of $variables include $NetworkType, $Connection, and $Password.
+					
+					<p>In order to prompt descriptive sentences, questions are asked such as:
+						<li> How is my data shared? </li>
+						<li> How is the data stored? </li>
+						<li> Who has access to the data? </li>
+						<li> How do I know that I am contacting the correct person?</li>
+					</p>
+					<p> These sentences prompt the expert to think of $variables such as $Connection, $Encryption, $Access, and $Authentication. Then with 
+					these $variables in mind, a sentence is crafted including each one. Then the $variable, can be varied in order to illustrate different
+					levels of security. For $Authentication, levels may include basic, dual-factor, and form-based authentication using encrypted credentials stored in a database.
+					In the case of $Connection levels may include TLS 1.2 and SSL 3.0. The expectation is not that they all are extremely secure, but that
+					they vary so that it can be verified if the user who reads the story can identify weak in comparison to strong security factors.
+					</p>
+				
+					
+					<p>The interaction statement we will describe is as follows: "As a <b> patient</b>, I'd like to use<i> email to contact </i> my doctor so that 
+					I can <u>share the results of my Peak Flow Meter</u>." </p>
+
+					<h3>Example descriptive statements:</h3>
+					<p>
+						<ul>
+							<li> I decide to contact my doctor while I am $Network. </li>
+								<ul>
+									<li>I decide to contact my doctor while I am <b> on my home network</b>.</li>
+									<li>I decide to contact my doctor while I am <b> at work</b>.</li>
+									<li>I decide to contact my doctor while I am <b> using public wifi</b>.</li>
+								</ul>
+							<li> When I log into my email account I have to enter my $password. </li>
+								<ul>
+									<li>When I log into my email account I have to enter my <b> 8 character, alphanumeric password</b>.</li>
+									<li>When I log into my email account I have to enter my<b> 8 character, alphanumeric password that contains no dictionary words</b>.</li>
+									<li>When I log into my email account I have to enter my<b> 12 character, alphanumeric password that contains no dictionary words</b>.</li>
+								</ul>
+							<li> The device measures my ability to breathe air out of my lungs. I take measurements twice a day and the doctors office stores the data in $Database. </li>
+								<ul>
+									<li>I take measurements twice a day and the doctors office stores the data in<b> mySQL</b>.</li>
+									<li>I take measurements twice a day and the doctors office stores the data in<b> Oracle</b>.</li>
+									<li>I take measurements twice a day and the doctors office stores the data in<b> MongoDB</b>.</li>
+								</ul>
+						</ul>
+					</p>
+					<p>
+						These sentences can then be combined to create several different vignettes varying from the lowest security to the highest security. With each 
+						level they should be ranked from 1 to 4 with 1 being least secure to 4 being most secure. For example public wifi would rate at a 1
+						bur work wifi would likely be ranked a 3.
+					</p>
+					<h3> Higher Security Vignette </h3>
+						<p> "As a <b> patient</b>, I'd like to use<i> email to contact </i> my doctor so that I can <u>share the results of my
+						 Peak Flow Meter</u>. I decide to contact my doctor while I am <b> on my home network</b>. When I log into my email account 
+						 I have to enter my<b> 12 character, alphanumeric password that contains no dictionary words</b>.I take measurements twice a day 
+						 and the doctors office stores the data in<b> Oracle</b>."
+						</p>
+					<h3> Lower Security Level Vignette </h3>
+						"As a <b> patient</b>, I'd like to use<i> email to contact </i> my doctor so that I can <u>share the results of my
+						 Peak Flow Meter</u>. I decide to contact my doctor while I am <b> using public wifi</b>. 
+						 When I log into my email account I have to enter my <b> 8 character, alphanumeric password</b>. I take measurements twice a day and the doctors 
+						 office stores the data in<b> MongoDB</b>.
+						 
+					<h5> Create your own Descriptive Statements below</h5>
+						
+						{% include 'grandvigne/tf/description-base.html' %}
+				{% endblock %}	
+	</body>
+    <!-- END Content -->
+	{% block footer %}
+		<footer id = "footer">
+				{% include 'grandvigne/tf/training-base.html' %}
+		</footer>
+	{% endblock %}
+
+</html>

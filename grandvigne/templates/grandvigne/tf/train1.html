@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+<html lang="en">
+	<head>
+		<title>{% block title %}Begin Training{% endblock %}</title>
+	</head>
+	<!-- Content -->
+	{% block content %}
+	<h1> What is a Vignette? </h1>
+	<p >
+		Researchers systematically manipulate factors to understand their composite and individual effects on
+		a decision [22, 26]. This reliable method is used by social and
+		decision scientists and applied across psychology, sociology,
+		and marketing, to name a few [2, 26]. Factorial vignettes are
+		proven more effective to understanding decision making than
+		direct questioning or single statement ratings that obscure the
+		underlying contributions of different factors to the overall
+		decision [1, 22, 26]. Factorial vignettes are presented in
+		surveys using a basic template that contains multiple
+		dimensions of the construct of interest. 
+	</p>
+	<p>
+			The perception of a paragraph changes depending on the adjectives within it  and its
+		subjects. For example, if the sentence was "A boy lost his ball and he cried." you may feel
+		sad and sympathize with him. However, if the author changed cried to laughed the scenario
+		changes in its entirety. Within security experts describing a network connection as being a home network as opposed
+		to a public network would raise different opinions on the safety of checking bank account balance. As such,
+		Vignettes in this application are short scenarios with different variables that can be described by varying the level of perceived security.
+		By changing variables in this way we are able to ask security experts to evaluate the overall security
+		of a system or a set of interactions. Having security experts craft different vignettes allows for more coverage of scenarios.
+		
+	</p>
+	{% endblock %}
+    <!-- END Content -->
+	{% block footer %}
+		<footer id = "footer">
+				{% include 'grandvigne/tf/training-base.html' %}
+		</footer>
+	{% endblock %}
+
+</html>

@@ -1,0 +1,105 @@
+
+{%block content %}
+	<div class = "container" id = "templateId">
+		{% block table %}
+			{% for field in form %}
+				{{field.error}}
+			{% endfor %}
+			
+		<form id = "train4" action = "" method = "post" name = "count" >
+			{% csrf_token %}
+			<fieldset id = "Form_Inputs">
+				<div  id = "desc0">
+					{{ desc_form_0.as_p}} 
+					{{ var_form_0.as_p}} 
+					<label for="id_lev_form">Levels:</label>
+					{% for field in lev_form_0 %} 
+						{{field|join:','}}
+					{% endfor %}
+				</div>
+			</fieldset>
+			
+		<input type="hidden" id = "countVals" name="countVals" value="count">
+
+	    <input id = 'submit' type = 'submit' value = "submit" name = "submit"/>
+		<input id = 'addButton' type = 'button' value = "Add Description" onclick = "Add();"/>
+		<input id = 'removeButton' type="hidden" value = "Remove" onclick = "removeForm();"/>
+
+		</form>
+		
+	{% endblock %}
+		
+	</div>
+{% endblock %}
+	
+
+<script type = 'text/javascript'>
+	{# document.write(code);#}
+	var _counter = 1;
+	var _counterDown = 1;
+	var template=document.createTextNode('');
+	var ind = 0;
+	
+	function appendStringAsNodes(element, html)
+    {
+        var frag = document.createDocumentFragment(),
+            tmp = document.createElement('fieldset'), child;
+        tmp.innerHTML = html;
+        // Append elements in a loop to a DocumentFragment, so that the browser does
+        // not re-render the document for each node
+        while (child = tmp.firstChild) {
+            frag.appendChild(child);
+        }
+		if (element !== null){
+			element.appendChild(frag); // Now, append all elements at once
+        } else console.log("null placeholder")
+		frag = tmp = null;
+    }
+
+	function Add() {
+		var desc_arr = ['{{ desc_form_1.as_p}}', '{{ desc_form_2.as_p}}', '{{ desc_form_3.as_p}}']
+		var var_arr = ['{{ var_form_1.as_p}}', '{{ var_form_2.as_p}}', '{{ var_form_3.as_p}}']
+		var lev_arr = ['<label for="id_lev_form">Levels:</label> {% for field in lev_form_1 %} {{field|join:','}} {% endfor %}',
+					   '<label for="id_lev_form">Levels:</label> {% for field in lev_form_2 %} {{field|join:','}} {% endfor %}',
+					   '<label for="id_lev_form">Levels:</label> {% for field in lev_form_3 %} {{field|join:','}} {% endfor %}']
+						
+		if (_counter < 4){
+		
+			var code = 
+					"<div id = newDesc" + String(_counter)+ ">" +
+					desc_arr[ind] +
+					var_arr[ind] +
+					lev_arr[ind] +				
+					'</div>';
+			console.log(code)
+			ind++;
+			appendStringAsNodes(document.getElementById("Form_Inputs"),code);
+			_counter++;
+			string = String(_counter)
+			document.getElementById("countVals").value = 'count'+string;
+			document.getElementById("removeButton").type = 'button';
+		} else document.getElementById("addButton").value = "Maximum Descriptions";
+			
+	}
+	function removeForm() {
+					
+		if (_counter > 1){
+			var Str = "newDesc" + String(_counter-1) ;
+			console.log(Str);
+			var parent = document.getElementById("Form_Inputs");
+			var child = document.getElementById(Str);
+			parent.removeChild(child);
+			_counter--;
+			ind --;
+			string = String(_counter-1)
+			document.getElementById("countVals").value = 'count'+string;
+			document.getElementById("addButton").value = "Add Description";
+			if(_counter == 1){
+				document.getElementById("removeButton").type = 'hidden';
+			}
+		} else document.getElementById("removeButton").value = "Must Have at least one description";
+			
+	}
+			
+			
+</script>

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+<html lang="en">
+	<head>
+		<title>{% block title %}Training{% endblock %}</title>
+	</head>
+	<!-- Content -->
+	{% block content %}
+	<h1> Varying Vignettes</h1>
+		
+		<p><b> Box showing the full vignette </b></p>
+		***
+			{{interactionText }}
+			{{domainField }}
+			{{descTexta}}
+			{{VarTexta }}
+			{{levelsa1}}
+			{{levelsa2}}
+			{{levelsa3}}
+			{% include 'grandvigne/tf/fullvign-base.html' %}
+		<p> ***8*
+			
+		When generating multiple vignettes the $variables may be between or within subjects. While reading the same vignette,
+		between-subjects are variables which stay the same each time the vignette is read, while within-subjects variables levels
+		alter each time in a randomized order. When creating vignettes you may indicate which one of your $variables would be best 
+		as within-subject variables.
+		 When taking
+					multiple vignettes the $variables may be between or within subjects. While reading the same vignette, between-subjects
+					are variables which stay the same each time the vignette is read, while within-subjects variables levels alter each
+					time in a randomized order. When creating vignettes you may indicate which one of your $variables would be best
+					as an within-subject variables.
+		</p>
+		<p> 
+		*example Photo*
+		</p>
+		
+		<p> 
+			Thankyou for Completing the vignette Training You may now submit your own Vignettes on our "create" page.
+		</p>
+	{% endblock %}
+    <!-- END Content -->
+	{% block footer %}
+		<footer id = "footer">
+				{% include 'grandvigne/tf/training-base.html' %}
+		</footer>
+	{% endblock %}
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+<html lang="en">
+	<head>
+		<title>{% block title %}Training{% endblock %}</title>
+	</head>
+	<!-- Content -->
+	{% block content %}
+	<h1> Why Healthcare? </h1>
+	<p >
+		The healthcare industry is a field that involves many different facets. Those who interact with the field are very diverse 
+		including the patients, doctors, insurance agents, nurses, pharmacists, the families of patients, students and more. The variety
+		of actors in the field in addition to the high risks associated with security breaches make the domain ideal for creating vignettes.
+		Within the industry the data being protected includes information relating to personal identity, financial data,as well as medicines and treatments for
+		patients. If data such as these were breached it would lower the reputation of the hospital and place patients and their families at risk 
+		of not only poor treatment but identity theft. When crafting vignettes keep the idea of healthcare in mind. For articles on security in the 
+		healthcare industry please click <a href = "https://healthitsecurity.com/tag/cybersecurity-in-healthcare" > here </a> or 
+		<a href = "https://securityintelligence.com/tag/health-care-industry/" > here </a>.
+	</p>
+	{% endblock %}
+    <!-- END Content -->
+	{% block footer %}
+		<footer id = "footer">
+				{% include 'grandvigne/tf/training-base.html' %}
+		</footer>
+	{% endblock %}
+
+</html>

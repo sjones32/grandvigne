@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'grandvigne/base.html' %}
+<html lang="en">
+	<head>
+	{% block head %}
+		{{ wizard.form.media }}
+		<title>{% block title %}Training{% endblock %}</title>
+		
+	{% endblock %}
+	</head>
+	<!-- Content -->
+	{% block content %}
+	<h1> Crafting a Vignette </h1>
+		<h2 > The Interaction Statement </h2>
+			<p>
+				An interaction statement is a sentence that describes an actor performing an 
+				action for some purpose. In this application the interaction statement is crafted as a 
+				user story that will be built upon. The <b>actor </b> will be bolded, the <i>action </i> italicized, and the <u> purpose </u> underlined. </p> 
+			<h3>
+				Example Interaction Statements:
+			</h3>
+				<li> As a <b> patient</b>, I'd like to use<i> email to contact </i> my doctor so that I can <u>share the results of my Peak Flow Meter</u>. </li>
+				<li> As a <b> nurse</b>, when I <i>receive a referral request </i>from the doctors office I review it over a shared secure product so that <u>
+				both the acute and post acute providers have proper access </u> to the referral. </li>
+			<p>In this example we follow the format of a) choosing an area within healthcare that involves an electronic device, and requires one or more actors. Secondly 
+			 b) we craft a sentence like the examples above which show how the technology and domain interact. </p>
+			<h4> Example areas: </h4>
+				<li>Billing </li>
+				<li>Health monitors (e.g. insulin pump, heart monitor, etc.) </li>
+				<li>Communication systems </li>
+				<li>Health Record Systems </li>
+				<li>Pharmacy Databases </li>
+			<h4> Example actors: </h4>
+				<li> Nurse </li>
+				<li> Doctor </li>
+				<li> Patient </li>
+				<li> Insurance Agent </li>
+				<li> Patient's family </li>
+				<li> Physical Therapist </li>
+			<p>
+				A basic format for crafting an interaction statement comes from Connextra. There are several variations but this is 
+				the format we'd like you to follow:
+				<li> "As an <b> &lt; actor &gt; </b>, I want to <i> &lt; action &gt; </i> so that <u> &lt; purpose &gt; </u>. </li>
+			</p>
+		
+			<h3> Create an Interaction Statement below.  </h3>
+				{% for field in form %}
+					{{field.error}}
+				{% endfor %}
+ 				<form action = "" method = "post">
+				{% csrf_token %}
+				<table>
+					{{ form }}
+				</table>
+				<input type = "submit" value =  "Submit"/>
+				</form>
+	{% endblock %}
+    <!-- END Content -->
+	{% block footer %}
+		<div id = "footer">
+			
+				{% include 'grandvigne/tf/training-base.html' %}
+		
+		</div>
+	{% endblock %}
+
+</html>
